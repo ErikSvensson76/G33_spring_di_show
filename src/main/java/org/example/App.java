@@ -1,13 +1,19 @@
 package org.example;
 
-/**
- * Hello world!
- *
- */
-public class App 
+
+import org.example.config.AppConfig;
+import org.example.data_access.StudentDao;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(AppConfig.class);
+
+        StudentDao studentDao = context.getBean(StudentDao.class);
+
+        context.close();
     }
 }
