@@ -19,12 +19,12 @@ class StudentDaoListImplTest {
     private StudentDaoListImpl testObject;
     @Autowired
     private StudentIdSequencer sequencer;
-    public static final Student STUDENT = new Student();
+    public  Student student = new Student();
     public static final String NAME = "Test Testsson";
 
     @BeforeEach
     void setUp() {
-        STUDENT.setName("Test Testsson");
+        student.setName(NAME);
     }
 
     @AfterEach
@@ -42,7 +42,7 @@ class StudentDaoListImplTest {
     @Test
     @DisplayName("Given student save should return expected result and student added")
     void save_happy_path() {
-        Student result = testObject.save(STUDENT);
+        Student result = testObject.save(student);
 
         assertNotNull(result);
         assertEquals(1, result.getId());
@@ -63,7 +63,7 @@ class StudentDaoListImplTest {
     @DisplayName("when trying to save same student 2nd time not added")
     void save_same_twice() {
 
-        Student student = testObject.save(STUDENT);
+        Student student = testObject.save(this.student);
         Student result = testObject.save(student);
 
         assertEquals(student, result);
