@@ -68,7 +68,5 @@ class StudentDaoListImplTest {
 
         assertEquals(student, result);
         assertEquals(1, testObject.findAll().size());
-
-
     }
 }
